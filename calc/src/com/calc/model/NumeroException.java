@@ -1,5 +1,11 @@
 package com.calc.model;
 
+/**
+ * Lanza unos mensajes si ocurren determinadas Exceptions.
+ * 
+ * @author estudiante
+ *
+ */
 @SuppressWarnings("serial")
 public class NumeroException extends RuntimeException {
 
