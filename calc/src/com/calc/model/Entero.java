@@ -25,13 +25,35 @@ public class Entero extends Numero {
 	@Override
 	protected void setValorEntero(int valorEntero) {
 		
-		String aCadena = String.valueOf(valorEntero);
-		for (int i=0; i<aCadena.length(); i++ ) {
-			if(Character.isLetter(i)) {
-				throw new NumeroException("Un número decimal|binario no contiene letras");
-			}
-		}
+		String aCadena = letrasEnNumero(valorEntero);
 		
+		esNumeroBinario(aCadena);
+		
+		rebasaLimite(valorEntero);
+		
+		this.valorEntero=valorEntero;
+		
+	}
+
+	/** 
+	 * Método extraído. Detecta si el número está dentro de los límites acordados.
+	 * 
+	 * @param valorEntero
+	 */
+	public void rebasaLimite(int valorEntero) {
+		if(valorEntero > VALOR_MAXIMO) {
+			throw new NumeroException("El valor introducido es mayor de lo permitido");
+		}else if(valorEntero < VALOR_MINIMO) {
+			throw new NumeroException("El valor introducido es menor de lo permitido");
+		}
+	}
+
+	/** 
+	 * Método extraído. Detecta si un número binario está sólo compuesto por 1s y 0s.
+	 * 
+	 * @param aCadena
+	 */
+	public void esNumeroBinario(String aCadena) {
 		if(Base.BINARIO.equals(this.base)) {
 			for (int i=0; i<aCadena.length(); i++ ) {
 				if(i!='1' && i!='0') {
@@ -39,15 +61,22 @@ public class Entero extends Numero {
 				}
 			}			
 		}
-		
-		if(valorEntero > VALOR_MAXIMO) {
-			throw new NumeroException("El valor introducido es mayor de lo permitido");
-		}else if(valorEntero < VALOR_MINIMO) {
-			throw new NumeroException("El valor introducido es menor de lo permitido");
+	}
+
+	/**
+	 * Método extraído. Detecta si un número contiene caracteres.
+	 * 
+	 * @param valorEntero
+	 * @return
+	 */
+	public String letrasEnNumero(int valorEntero) {
+		String aCadena = String.valueOf(valorEntero);
+		for (int i=0; i<aCadena.length(); i++ ) {
+			if(Character.isLetter(i)) {
+				throw new NumeroException("Un número decimal|binario no contiene letras");
+			}
 		}
-		
-		this.valorEntero=valorEntero;
-		
+		return aCadena;
 	}
 
 }
