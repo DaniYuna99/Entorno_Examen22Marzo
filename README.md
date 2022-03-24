@@ -12,7 +12,7 @@ Hay un valor mínimo y máximo de números, hasta 5 cifras de capacidad.
 El programa revisará si el número es base decimal o binario, y realizará los 
 cálculos. También detectará si dentro de esos números se encuentran caracteres,
 o si dentro de un número binario se contiene números diferentes a 1s y 0s. 
-Si se dan esos caso, el programa te notificará el error.
+Si se dan esos casos, el programa te notificará el error.
 
 
 ## 2. ¿Cuál es el link al repositorio donde se encuentra el proyecto?
